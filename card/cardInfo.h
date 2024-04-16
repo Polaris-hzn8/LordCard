@@ -8,13 +8,15 @@
 #ifndef CARDINFO_H
 #define CARDINFO_H
 
+//卡牌花色
 enum CardSuit {
-    Diamond,        //方块
-    Club,           //梅花
-    Heart,          //红桃
-    Spade           //黑桃
+    Diamond,    //方块
+    Club,       //梅花
+    Heart,      //红桃
+    Spade       //黑桃
 };
 
+//卡牌点数
 enum CardPoint {
     Card_3,
     Card_4,
@@ -29,21 +31,24 @@ enum CardPoint {
     Card_K,
     Card_A,
     Card_2,
-    Card_SJ,        //Joker Spade
-    Card_BJ         //Joker Heart
+    Card_SJ,    //Joker Spade
+    Card_BJ     //Joker Heart
 };
 
 class CardInfo {
 public:
     CardInfo();
-    void setSuit(CardSuit suit) { _suit = suit; }
-    CardSuit suit() { return _suit; }
-    void setPoint(CardPoint point) { _point = point; }
-    CardPoint point() { return _point; }
+    // 设置花色信息
+    void setSuit(CardSuit suit) { m_suit = suit; }
+    // 获取花色信息
+    CardSuit getSuit() { return m_suit; }
+    // 设置点数信息
+    void setPoint(CardPoint point) { m_point = point; }
+    // 获取点数信息
+    CardPoint getPoint() { return m_point; }
 private:
-    CardSuit _suit;
-    CardPoint _point;
+    CardSuit m_suit;     //卡牌花色
+    CardPoint m_point;   //卡牌点数
 };
 
 #endif // CARDINFO_H
-

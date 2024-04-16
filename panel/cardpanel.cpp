@@ -9,23 +9,27 @@
 #include "cardpanel.h"
 
 CardPanel::CardPanel(QWidget *parent) : QWidget(parent) {
-    _isfront = true;//默认窗口为正面
+    m_bIsfront = true;//默认窗口为正面
 }
 
+/**
+ * @brief 设置好图片后立即进行绘制update
+ * @param front 正面窗口图片
+ * @param back  反面窗口图片
+ */
 void CardPanel::setImage(QPixmap &front, QPixmap &back) {
-    //设置好图片后立即进行绘制update
-    _front = front;
-    _back = back;
+    m_pixFront = front;
+    m_pixBack = back;
     update();
-    setFixedSize(_front.size());
+    setFixedSize(m_pixFront.size());
 
 }
 
-void CardPanel::paintEvent(QPaintEvent *event) {
+void CardPanel::paintEvent(QPaintEvent *paintEvent) {
     QPainter painter(this);
-    if (_isfront) {
-        painter.drawPixmap(rect(), _front);
+    if (m_bIsfront) {
+        painter.drawPixmap(rect(), m_pixFront);
     } else {
-        painter.drawPixmap(rect(), _back);
+        painter.drawPixmap(rect(), m_pixBack);
     }
 }

@@ -5,7 +5,7 @@
     > Created Time: 2023-08-10 19:05:54
 ************************************************************************/
 
-#include "gamepanel.h"
+#include "panel/gamepanel.h"
 #include <QApplication>
 
 int main(int argc, char *argv[]) {

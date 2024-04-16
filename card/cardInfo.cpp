@@ -5,7 +5,7 @@
     > Created Time: 2023-08-10 20:00:54
 ************************************************************************/
 
-#include "cardinfo.h"
+#include "cardInfo.h"
 
 CardInfo::CardInfo() {
 
