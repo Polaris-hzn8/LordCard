@@ -16,18 +16,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    card/cardInfo.cpp \
-    card/cardsInfo.cpp \
     main.cpp \
-    panel/cardpanel.cpp \
-    panel/gamepanel.cpp \
-    player/player.cpp
-HEADERS += \
     card/cardInfo.h \
-    card/cardsInfo.h \
+    card/cardInfo.cpp \
+    card/cardInfos.h \
+    card/cardInfos.cpp \
     panel/cardpanel.h \
+    panel/cardpanel.cpp \
     panel/gamepanel.h \
-    player/player.h
+    panel/gamepanel.cpp \
+    player/player.h \
+    player/player.cpp \
+
+HEADERS += \
 
 FORMS += \
     gamepanel.ui

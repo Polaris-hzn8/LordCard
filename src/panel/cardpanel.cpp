@@ -9,7 +9,9 @@
 #include "cardpanel.h"
 
 CardPanel::CardPanel(QWidget *parent) : QWidget(parent) {
-    m_bIsfront = true;//默认窗口为正面
+    m_bSelected = false;    //默认未被选中
+    m_bFront    = true;     //默认窗口为正面
+    m_pOwner    = nullptr;
 }
 
 /**
@@ -27,7 +29,7 @@ void CardPanel::setImage(QPixmap &front, QPixmap &back) {
 
 void CardPanel::paintEvent(QPaintEvent *paintEvent) {
     QPainter painter(this);
-    if (m_bIsfront) {
+    if (m_bFront) {
         painter.drawPixmap(rect(), m_pixFront);
     } else {
         painter.drawPixmap(rect(), m_pixBack);

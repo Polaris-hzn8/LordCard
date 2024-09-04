@@ -9,28 +9,28 @@
 #define CARDS_H
 
 #include <QSet>
-#include "card/cardinfo.h"
+#include "cardInfo.h"
 
-class CardsInfo
+class CardInfos
 {
 public:
-    CardsInfo();
+    CardInfos();
 
     // 扑克牌数据添加 发牌
     void increase(CardInfo& cardInfo);
-    void increase(CardsInfo& cardsInfo);
+    void increase(CardInfos& CardInfos);
     // 一次性插入多个数据 重载操作符<<
-    CardsInfo& operator<<(const CardInfo& cardInfo);
-    CardsInfo& operator<<(const CardsInfo& cardsInfo);
+    CardInfos &operator<<(CardInfo& cardInfo);
+    CardInfos &operator<<(CardInfos& CardInfos);
 
     // 扑克牌数据删除 出牌
     void decrease(CardInfo& cardInfo);
-    void decrease(CardsInfo& cardsInfo);
+    void decrease(CardInfos& CardInfos);
 
 
 
 private:
-    QSet<CardInfo> m_cardsInfo;
+    QSet<CardInfo> m_CardInfos;
 };
 
 #endif // CARDS_H
