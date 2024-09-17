@@ -17,18 +17,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    card/cardInfo.h \
     card/cardInfo.cpp \
-    card/cardInfos.h \
     card/cardInfos.cpp \
-    panel/cardpanel.h \
     panel/cardpanel.cpp \
-    panel/gamepanel.h \
     panel/gamepanel.cpp \
-    player/player.h \
-    player/player.cpp \
+    player/player.cpp
 
 HEADERS += \
+    card/cardInfo.h \
+    card/cardInfos.h \
+    panel/cardpanel.h \
+    panel/gamepanel.h \
+    player/player.h
 
 FORMS += \
     gamepanel.ui

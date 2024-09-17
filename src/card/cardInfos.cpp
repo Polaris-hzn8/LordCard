@@ -1,10 +1,16 @@
-/*************************************************************************
-    > File Name: cards.cpp
-    > Author: Polaris-hzn8
-    > Mail: 3453851623@qq.com
-    > Created Time: 2024-03-13 07:59:05
-************************************************************************/
+/**
+* Copyright (C) 2024 Polaris-hzn8 / LuoChenhao
+*
+* Author: luochenhao
+* Email: lch2022fox@163.com
+* Time: 2024-09-11 08:35:20
+* Github: https://github.com/Polaris-hzn8
+* Src code may be copied only under the term's of the Apache License
+* Please visit the http://www.apache.org/licenses/ Page for more detail.
+*
+**/
 
+#include <QRandomGenerator>
 #include "cardInfos.h"
 
 CardInfos::CardInfos()
@@ -12,56 +18,117 @@ CardInfos::CardInfos()
 
 }
 
-/**
- * @brief 添加扑克牌信息
- * @param cardInfo
- */
-void CardInfos::increase(CardInfo &cardInfo)
+void CardInfos::addInfo(const CardInfo& cardInfo)
 {
-    m_CardInfos.insert(cardInfo);
+    m_cardSet.insert(cardInfo);
 }
 
-/**
- * @brief 添加扑克牌信息集合
- * @param CardInfos
- */
-void CardInfos::increase(CardInfos &CardInfos)
+void CardInfos::addInfo(const CardInfos& cardInfos)
 {
-    m_CardInfos.unite(CardInfos.m_CardInfos);
+    m_cardSet.unite(cardInfos.m_cardSet);
 }
 
-/**
- * @brief CardInfos::operator << 添加多张扑克牌
- * @param cardInfo
- * @return
- */
-CardInfos &CardInfos::operator<<(CardInfo &cardInfo)
+void CardInfos::removeInfo(CardInfo& cardInfo)
 {
-    increase(cardInfo);
+    m_cardSet.remove(cardInfo);
+}
+
+void CardInfos::removeInfo(CardInfos& cardInfs)
+{
+    m_cardSet.subtract(cardInfs.m_cardSet);
+}
+
+CardInfos &CardInfos::operator<<(const CardInfo& cardInfo)
+{
+    addInfo(cardInfo);
     return *this;
 }
 
-/**
- * @brief CardInfos::operator << 添加多个扑克牌集合
- * @param CardInfos
- * @return
- */
-CardInfos &CardInfos::operator<<(CardInfos &cardInfos)
+CardInfos &CardInfos::operator<<(const CardInfos &cardInfos)
 {
-    increase(cardInfos);
+    addInfo(cardInfos);
     return *this;
 }
 
-/**
- * @brief CardInfos::decrease
- * @param cardInfo
- */
-void CardInfos::decrease(CardInfo &cardInfo)
+CardInfo::CardPoint CardInfos::getMinPoint()
 {
-    m_CardInfos.remove(cardInfo);
+    CardInfo::CardPoint minPoint = CardInfo::CardPoint::Card_End;
+    if (!m_cardSet.empty()) {
+        for (auto it = m_cardSet.begin(); it != m_cardSet.end(); ++it) {
+            CardInfo::CardPoint tmpPoint = it->getPoint();
+            if (tmpPoint < minPoint) {
+                minPoint = tmpPoint;
+            }
+        }
+    }
+    return minPoint;
 }
 
-void CardInfos::decrease(CardInfos &CardInfos)
+CardInfo::CardPoint CardInfos::getMaxPoint()
 {
-    m_CardInfos.subtract(CardInfos.m_CardInfos);
+    CardInfo::CardPoint maxPoint = CardInfo::CardPoint::Card_Begin;
+    if (!m_cardSet.empty()) {
+        for (auto it = m_cardSet.begin(); it != m_cardSet.end(); ++it) {
+            CardInfo::CardPoint tmpPoint = it->getPoint();
+            if (tmpPoint > maxPoint) {
+                maxPoint = tmpPoint;
+            }
+        }
+    }
+    return maxPoint;
 }
+
+int CardInfos::countPoint(const CardInfo::CardPoint point)
+{
+    int nCardNum = 0;
+    if (!m_cardSet.empty()) {
+        for (auto it = m_cardSet.begin(); it != m_cardSet.end(); ++it) {
+            CardInfo::CardPoint tmpPoint = it->getPoint();
+            if (tmpPoint == point) {
+                nCardNum++;
+            }
+        }
+    }
+    return nCardNum;
+}
+
+bool CardInfos::cardExist(const CardInfo cardInfo)
+{
+    return m_cardSet.contains(cardInfo);
+}
+
+bool CardInfos::cardsExist(const CardInfos cardInfos)
+{
+    return m_cardSet.contains(cardInfos.m_cardSet);
+}
+
+// 取出第nRandom张牌
+CardInfo CardInfos::getRandCardInfo()
+{
+    int nRandom = QRandomGenerator::global()->bounded(m_cardSet.size());
+
+    CardSet::const_iterator cit = m_cardSet.constBegin();
+    for (int i = 0; i < nRandom; ++i) ++cit;
+    CardInfo cardInfo = *cit;
+
+    m_cardSet.erase(cit);
+
+    return cardInfo;
+}
+
+// 对卡牌信息进行排序
+CardList CardInfos::reArrangeCardInfo(SortType sortType)
+{
+    CardList cardList;
+    if (!empty()) {
+        for (auto &cardInfo : m_cardSet)
+            cardList.push_back(cardInfo);
+        if (sortType == ST_ASC) {
+            std::sort(cardList.begin(), cardList.end(), lessSort);
+        } else if (sortType == ST_DESC) {
+            std::sort(cardList.begin(), cardList.end(), greaterSort);
+        }
+    }
+    return cardList;
+}
+
