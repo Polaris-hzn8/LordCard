@@ -3,22 +3,26 @@
 *
 * Author: luochenhao
 * Email: lch2022fox@163.com
-* Time: 2024-09-11 08:36:10
+* Time: 2024-09-19 21:07:47
 * Github: https://github.com/Polaris-hzn8
 * Src code may be copied only under the term's of the Apache License
 * Please visit the http://www.apache.org/licenses/ Page for more detail.
 *
 **/
 
-#include "player.h"
+#include "robotPlayer.h"
 
-Player::Player(QObject *parent) : QObject(parent)
+RobotPlyer::RobotPlyer(QObject *parent) : Player(parent)
+{
+    m_type = Player::Robot;
+}
+
+void RobotPlyer::prepareCallLord()
 {
 
 }
 
-Player::Player(QString strName, QObject *parent)
+void RobotPlyer::preparePlayHand()
 {
-    m_strName = strName;
-}
 
+}
