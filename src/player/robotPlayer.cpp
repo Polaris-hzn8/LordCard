@@ -12,17 +12,17 @@
 
 #include "robotPlayer.h"
 
-RobotPlyer::RobotPlyer(QObject *parent) : Player(parent)
+RobotPlayer::RobotPlayer(QObject *parent) : Player(parent)
 {
-    m_type = Player::Robot;
+    m_type = Player::T_Robot;
 }
 
-void RobotPlyer::prepareCallLord()
+void RobotPlayer::prepareCallLord()
 {
 
 }
 
-void RobotPlyer::preparePlayHand()
+void RobotPlayer::preparePlayHand()
 {
 
 }

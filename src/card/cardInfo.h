@@ -21,10 +21,10 @@ public:
     //卡牌花色
     enum CardSuit {
         Suit_Begin,
-        Diamond,    //方块
-        Club,       //梅花
-        Heart,      //红桃
-        Spade,       //黑桃
+        Suit_Diamond,    //方块
+        Suit_Club,       //梅花
+        Suit_Heart,      //红桃
+        Suit_Spade,       //黑桃
         Suit_End
     };
     //卡牌点数
@@ -49,6 +49,7 @@ public:
     };
 public:
     CardInfo();
+    CardInfo(CardPoint point, CardSuit suit) { m_point = point; m_suit = suit; }
     // 设置花色信息
     void setSuit(CardSuit suit) { m_suit = suit; }
     // 获取花色信息

@@ -16,12 +16,12 @@
 #include <QObject>
 #include "player.h"
 
-class RobotPlyer : public Player
+class RobotPlayer : public Player
 {
     Q_OBJECT
 public:
     using Player::Player;//继承构造函数
-    explicit RobotPlyer(QObject *parent = nullptr);
+    explicit RobotPlayer(QObject *parent = nullptr);
     void prepareCallLord() override;
     void preparePlayHand() override;
 };
