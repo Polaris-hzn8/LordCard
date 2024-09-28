@@ -53,10 +53,13 @@ CardInfos &CardInfos::operator<<(const CardInfos &cardInfos)
 CardInfo::CardPoint CardInfos::getMinPoint()
 {
     CardInfo::CardPoint minPoint = CardInfo::CardPoint::Card_End;
-    if (!m_cardSet.empty()) {
-        for (auto it = m_cardSet.begin(); it != m_cardSet.end(); ++it) {
+    if (!m_cardSet.empty())
+    {
+        for (auto it = m_cardSet.begin(); it != m_cardSet.end(); ++it)
+        {
             CardInfo::CardPoint tmpPoint = it->getPoint();
-            if (tmpPoint < minPoint) {
+            if (tmpPoint < minPoint)
+            {
                 minPoint = tmpPoint;
             }
         }
@@ -67,10 +70,13 @@ CardInfo::CardPoint CardInfos::getMinPoint()
 CardInfo::CardPoint CardInfos::getMaxPoint()
 {
     CardInfo::CardPoint maxPoint = CardInfo::CardPoint::Card_Begin;
-    if (!m_cardSet.empty()) {
-        for (auto it = m_cardSet.begin(); it != m_cardSet.end(); ++it) {
+    if (!m_cardSet.empty())
+    {
+        for (auto it = m_cardSet.begin(); it != m_cardSet.end(); ++it)
+        {
             CardInfo::CardPoint tmpPoint = it->getPoint();
-            if (tmpPoint > maxPoint) {
+            if (tmpPoint > maxPoint)
+            {
                 maxPoint = tmpPoint;
             }
         }
@@ -81,10 +87,13 @@ CardInfo::CardPoint CardInfos::getMaxPoint()
 int CardInfos::countPoint(const CardInfo::CardPoint point)
 {
     int nCardNum = 0;
-    if (!m_cardSet.empty()) {
-        for (auto it = m_cardSet.begin(); it != m_cardSet.end(); ++it) {
+    if (!m_cardSet.empty())
+    {
+        for (auto it = m_cardSet.begin(); it != m_cardSet.end(); ++it)
+        {
             CardInfo::CardPoint tmpPoint = it->getPoint();
-            if (tmpPoint == point) {
+            if (tmpPoint == point)
+            {
                 nCardNum++;
             }
         }
@@ -120,12 +129,18 @@ CardInfo CardInfos::getRandCardInfo()
 CardList CardInfos::reArrangeCardInfo(SortType sortType)
 {
     CardList cardList;
-    if (!empty()) {
+    if (!empty())
+    {
         for (auto &cardInfo : m_cardSet)
+        {
             cardList.push_back(cardInfo);
-        if (sortType == ST_ASC) {
+        }
+        if (sortType == ST_ASC)
+        {
             std::sort(cardList.begin(), cardList.end(), lessSort);
-        } else if (sortType == ST_DESC) {
+        }
+        else if (sortType == ST_DESC)
+        {
             std::sort(cardList.begin(), cardList.end(), greaterSort);
         }
     }

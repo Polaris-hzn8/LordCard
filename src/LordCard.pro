@@ -22,9 +22,11 @@ SOURCES += \
     card/cardInfos.cpp \
     panel/cardpanel.cpp \
     panel/gamepanel.cpp \
+    panel/scorepanel.cpp \
     player/player.cpp \
     player/robotPlayer.cpp \
-    player/userplayer.cpp
+    player/userplayer.cpp \
+    weget/mybutton.cpp
 
 HEADERS += \
     card/cardInfo.h \
@@ -32,12 +34,16 @@ HEADERS += \
     controller/gamecontroller.h \
     panel/cardpanel.h \
     panel/gamepanel.h \
+    panel/scorepanel.h \
     player/player.h \
     player/robotPlayer.h \
-    player/userplayer.h
+    player/userplayer.h \
+    weget/mybutton.h
 
 FORMS += \
-    gamepanel.ui
+    panel/gamepanel.ui \
+    panel/gamepanel.ui \
+    panel/scorepanel.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -3,23 +3,24 @@
 *
 * Author: luochenhao
 * Email: lch2022fox@163.com
-* Time: 2024-09-11 08:35:52
+* Time: 2024-09-29 00:53:13
 * Github: https://github.com/Polaris-hzn8
 * Src code may be copied only under the term's of the Apache License
 * Please visit the http://www.apache.org/licenses/ Page for more detail.
 *
 **/
 
-#include "gamepanel.h"
-#include "panel/ui_gamepanel.h"
+#include "scorepanel.h"
+#include "ui_scorepanel.h"
 
-GamePanel::GamePanel(QWidget *parent):QMainWindow(parent), ui(new Ui::GamePanel)
+ScorePanel::ScorePanel(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::ScorePanel)
 {
     ui->setupUi(this);
 }
 
-GamePanel::~GamePanel()
+ScorePanel::~ScorePanel()
 {
     delete ui;
 }
-

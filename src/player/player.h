@@ -55,7 +55,7 @@ public:
     Player* getNextPlayer() { return m_pPlayerNext; }
 
     //抢地主
-    void grabLordBet(int point);
+    void grabLord(int point);
     //玩家取牌
     void storeDispatchCard(CardInfo& cardInfo) { m_cardInfos.addInfo(cardInfo); }
     void storeDispatchCard(CardInfos& cardInfos) { m_cardInfos.addInfo(cardInfos); }

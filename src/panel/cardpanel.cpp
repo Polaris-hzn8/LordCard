@@ -43,9 +43,12 @@ void CardPanel::paintEvent(QPaintEvent *paintEvent)
 {
     QPainter painter(this);
     //根据正反面情况绘制窗口图像
-    if (m_bFront) {
+    if (m_bFront)
+    {
         painter.drawPixmap(rect(), m_pixFront);
-    } else {
+    }
+    else
+    {
         painter.drawPixmap(rect(), m_pixBack);
     }
 }
