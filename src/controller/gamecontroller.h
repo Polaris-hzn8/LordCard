@@ -17,6 +17,7 @@
 #include "player/robotPlayer.h"
 #include "player/userplayer.h"
 #include "card/cardInfos.h"
+#include "card/cardInfo.h"
 
 class GameController : public QObject
 {
@@ -57,6 +58,15 @@ public:
     CardInfos       dispatchRemainCardInfos();
 
     void            resetAdllCardInfos();
+
+    //抢地主相关操作
+    void            startLordElection();                //准备叫地主
+    void            startLordConfirm(Player* player);  //成为地主
+
+    //出牌相关操作
+
+    //游戏得分相关操作
+    void            resetScore();
 
 private:
     RobotPlayer*    m_lRobotPlayer;

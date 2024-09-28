@@ -88,3 +88,29 @@ void GameController::resetAdllCardInfos()
     m_pendPlayer = nullptr;
     m_pendCardInfos.clear();
 }
+
+void GameController::startLordElection()
+{
+    // m_currPlayer->prepareCallLord();
+}
+
+void GameController::startLordConfirm(Player* player)
+{
+    player->setRole(Player::Lord);
+    player->getNextPlayer()->setRole(Player::Farmer);
+    player->getPrevPlayer()->setRole(Player::Farmer);
+
+    CardInfos remainCardInfos = dispatchRemainCardInfos();
+    player->storeDispatchCard(remainCardInfos);
+
+    m_currPlayer = player;
+
+    m_currPlayer->preparePlayHand();
+}
+void GameController::resetScore()
+{
+    m_rRobotPlayer->setScore(0);
+    m_lRobotPlayer->setScore(0);
+    m_userPlayer->setScore(0);
+}
+

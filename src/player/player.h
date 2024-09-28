@@ -72,9 +72,9 @@ public:
     CardInfos getPendCardInfos() { return m_pendCardInfos; }
 public:
     //叫地主
-    virtual void prepareCallLord();
+    virtual void prepareCallLord() {};
     //玩家出牌
-    virtual void preparePlayHand();
+    virtual void preparePlayHand() {};
 
 protected:
     QString     m_strName;
